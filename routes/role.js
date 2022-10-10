@@ -4,7 +4,7 @@ const { body, validationResult } = require("express-validator");
 const connection = require("../config/database");
 
 /*
-    GET ALL USER
+    GET ALL ROLE
 */
 router.get("/", function (request, response) {
   connection.query("SELECT * FROM role ORDER BY id", function (err, rows) {
@@ -24,9 +24,9 @@ router.get("/", function (request, response) {
 });
 
 /*
-    INSERT USER
+    INSERT ROLE
 */
-router.post("/role", [body("role").notEmpty()], (request, response) => {
+router.post("/", [body("role").notEmpty()], (request, response) => {
   const errors = validationResult(request);
 
   if (!errors.isEmpty()) {
@@ -56,7 +56,7 @@ router.post("/role", [body("role").notEmpty()], (request, response) => {
 });
 
 /*
-  GET USER BY ID
+  GET ROLE BY ID
 */
 router.get("/(:id)", function (request, response) {
   let id = request.params.id;
@@ -84,9 +84,9 @@ router.get("/(:id)", function (request, response) {
 });
 
 /* 
-    UPDATE USER
+    UPDATE ROLE
 */
-router.patch("/update/:id", [body("role").notEmpty()], (request, response) => {
+router.patch("/:id", [body("role").notEmpty()], (request, response) => {
   const errors = validationResult(request);
 
   if (!errors.isEmpty()) {
@@ -121,9 +121,9 @@ router.patch("/update/:id", [body("role").notEmpty()], (request, response) => {
 });
 
 /* 
-  DELETE USER
+  DELETE ROLE
 */
-router.delete("/delete/(:id)", function (request, response) {
+router.delete("/(:id)", function (request, response) {
   let id = request.params.id;
 
   connection.query(`DELETE FROM role WHERE id = ${id}`, function (err, rows) {

@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
-  password: "",
+  password: "r3tr0c00l159",
   database: "db_api_vigenesia",
 });
 

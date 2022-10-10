@@ -3,8 +3,8 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const connection = require("../config/database");
 
-/*
-    GET ALL USER
+/*xs
+    GET ALL MOTIVASI
 */
 router.get("/", function (request, response) {
   connection.query("SELECT * FROM motivasi ORDER BY id", function (err, rows) {
@@ -24,10 +24,10 @@ router.get("/", function (request, response) {
 });
 
 /*
-    INSERT USER
+    INSERT MOTIVASI
 */
 router.post(
-  "/motivasi",
+  "/",
   [body("isi_motivasi").notEmpty(), body("id_user").notEmpty()],
   (request, response) => {
     const errors = validationResult(request);
@@ -65,7 +65,7 @@ router.post(
 );
 
 /*
-  GET USER BY ID
+  GET MOTIVASI BY ID
 */
 router.get("/(:id)", function (request, response) {
   let id = request.params.id;
@@ -96,10 +96,10 @@ router.get("/(:id)", function (request, response) {
 });
 
 /* 
-    UPDATE USER
+    UPDATE MOTIVASI
 */
 router.patch(
-  "/update/:id",
+  "/:id",
   [body("isi_motivasi").notEmpty(), body("id_user").notEmpty()],
   (request, response) => {
     const errors = validationResult(request);
@@ -137,10 +137,10 @@ router.patch(
   }
 );
 
-/* 
-  DELETE USER
+/*
+  DELETE MOTIVASI
 */
-router.delete("/delete/(:id)", function (request, response) {
+router.delete("/(:id)", function (request, response) {
   let id = request.params.id;
 
   connection.query(

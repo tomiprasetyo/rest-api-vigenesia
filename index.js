@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/api/users", userRouter);
-app.use("/api/motivasi", motivasiRouter);
-app.use("/api/role", roleRouter);
+app.use("/api/vigenesia/user", userRouter);
+app.use("/api/vigenesia/motivasi", motivasiRouter);
+app.use("/api/vigenesia/role", roleRouter);
 
 app.listen(port, () => {
   console.log(`app is runnning at port ${port}`);

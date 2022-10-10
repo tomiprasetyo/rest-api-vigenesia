@@ -27,7 +27,7 @@ router.get("/", function (request, response) {
     INSERT USER
 */
 router.post(
-  "/user",
+  "/",
   [
     body("nama").notEmpty(),
     body("profesi").notEmpty(),
@@ -106,7 +106,7 @@ router.get("/(:id)", function (request, response) {
     UPDATE USER
 */
 router.patch(
-  "/update/:id",
+  "/:id",
   [
     body("nama").notEmpty(),
     body("profesi").notEmpty(),
@@ -157,7 +157,7 @@ router.patch(
 /* 
   DELETE USER
 */
-router.delete("/delete/(:id)", function (request, response) {
+router.delete("/(:id)", function (request, response) {
   let id = request.params.id;
 
   connection.query(`DELETE FROM user WHERE id = ${id}`, function (err, rows) {
